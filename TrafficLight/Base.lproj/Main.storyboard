@@ -7,6 +7,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="TimesNewRoman.ttf">
+            <string>.SFUI-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -36,9 +41,10 @@
                                 <variation key="heightClass=compact-widthClass=regular" axis="horizontal"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4A-vD-Cjp">
-                                <rect key="frame" x="158" y="695" width="75" height="35"/>
+                                <rect key="frame" x="130" y="695" width="130" height="35"/>
+                                <fontDescription key="fontDescription" name=".SFUI-Regular" family=".AppleSystemUIFont" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="buttonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="dc1-Vc-nAe"/>
                                 </connections>
@@ -52,9 +58,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="F4A-vD-Cjp" secondAttribute="bottom" constant="80" id="IW6-cc-TA8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Hv8-3i-DJa" secondAttribute="trailing" constant="130" id="Sq5-8p-hLp"/>
                             <constraint firstItem="Hv8-3i-DJa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="47" id="WvZ-Jn-7DE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F4A-vD-Cjp" secondAttribute="trailing" constant="157" id="amn-Tf-LMO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F4A-vD-Cjp" secondAttribute="trailing" constant="130" id="amn-Tf-LMO"/>
                             <constraint firstItem="Hv8-3i-DJa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="iI2-Pv-c0J"/>
-                            <constraint firstItem="F4A-vD-Cjp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="158" id="uek-n4-PXK"/>
+                            <constraint firstItem="F4A-vD-Cjp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="130" id="uek-n4-PXK"/>
                         </constraints>
                     </view>
                     <connections>
