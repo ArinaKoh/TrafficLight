@@ -8,59 +8,56 @@
 import UIKit
 
 class ViewController: UIViewController {
+    enum CurrentLight {
+        case red, yellow, green
+    }
     
     @IBOutlet var redLightView: UIView!
     @IBOutlet var yellowLightView: UIView!
     @IBOutlet var greenLightView: UIView!
+    
     @IBOutlet var scrollingButton: UIButton!
     
-    let currentAlpha: CGFloat = 0.3
+    private var currentLight =  CurrentLight.red
+    private let lightIsOn: CGFloat = 1
+    private let lightIsOff: CGFloat = 0.3
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        redLightView.alpha = currentAlpha
-        yellowLightView.alpha = currentAlpha
-        greenLightView.alpha = currentAlpha
-        redLightView.layer.cornerRadius = 65
-        yellowLightView.layer.cornerRadius = 65
-        greenLightView.layer.cornerRadius = 65
-        
-        scrollingButton.configuration = setUpButton(with: "Start")
+        redLightView.alpha = lightIsOff
+        yellowLightView.alpha = lightIsOff
+        greenLightView.alpha = lightIsOff
         
     }
-
+    
+    override func viewWillLayoutSubviews() {
+        redLightView.layer.cornerRadius = redLightView.frame.width / 2
+        yellowLightView.layer.cornerRadius = redLightView.frame.width / 2
+        greenLightView.layer.cornerRadius = redLightView.frame.width / 2
+    }
+    
     
     @IBAction func buttonTapped() {
+        if scrollingButton.currentTitle == "Start" {
+            scrollingButton.setTitle("Next", for: .normal)
+        }
         
-        scrollingButton.setTitle("Next", for: .normal)
-        
-        if greenLightView.alpha == yellowLightView.alpha {
-            greenLightView.alpha = CGFloat(MAXFLOAT)
-            redLightView.alpha = currentAlpha
+        switch currentLight {
+        case .red:
+            greenLightView.alpha = lightIsOff
+            redLightView.alpha = lightIsOn
+            currentLight = .yellow
+        case .yellow:
+            redLightView.alpha = lightIsOff
+            yellowLightView.alpha = lightIsOn
+            currentLight = .green
+        case .green:
+            yellowLightView.alpha = lightIsOff
+            greenLightView.alpha = lightIsOn
+            currentLight = .red
         }
-        else if greenLightView.alpha > currentAlpha && yellowLightView.alpha == redLightView.alpha {
-            yellowLightView.alpha = CGFloat(MAXFLOAT)
-            greenLightView.alpha = currentAlpha
-        }
-        else if yellowLightView.alpha > currentAlpha && redLightView.alpha == greenLightView.alpha {
-            redLightView.alpha = CGFloat(MAXFLOAT)
-            yellowLightView.alpha = currentAlpha
-        }
-         return
     }
-    
-    
-    private func setUpButton(with title : String) -> UIButton.Configuration {
-        var buttonConfiguration = UIButton.Configuration.filled()
-        buttonConfiguration.title = title
-        buttonConfiguration.baseBackgroundColor = UIColor.blue
-        buttonConfiguration.buttonSize = .large
-        buttonConfiguration.cornerStyle = .large
-        buttonConfiguration.attributedTitle?.font = UIFont.systemFont(ofSize: 32, weight: .bold)
-        
-        return buttonConfiguration
-    }
-
 }
 
+    
